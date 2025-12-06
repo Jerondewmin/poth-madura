@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en_LK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poth Madura | Sri Lanka's Premier eBook Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0a2342; /* Deep Royal Blue - The "Mansion" feel */
+            --secondary-color: #d4af37; /* Gold accent */
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --whatsapp-color: #25D366; /* Official WhatsApp Green */
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Sinhala', sans-serif;
+            color: var(--text-dark);
+            background-color: #f4f6f8;
+        }
+
+        /* --- Header Styles --- */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .sinhala-brand {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1.4rem;
+            margin-left: 5px;
+            color: #555;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        
+        .nav-icon-btn {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-left: 15px;
+            position: relative;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* --- Hero Section Styles --- */
+        .hero-section {
+            /* Placeholder image showing a library/reading vibe */
+            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('https://source.unsplash.com/1600x900/?library,books,reading');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-sinhala {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .btn-gold {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 700;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-gold:hover {
+            background-color: #b3932a;
+            color: white;
+        }
+
+        /* --- Section Headers --- */
+        .section-header {
+            text-align: center;
+            margin: 50px 0 30px;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- Book Card Styles --- */
+        .book-card {
+            border: none;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-cover-container {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .book-title-sinhala {
+             font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        .book-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .book-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Custom WhatsApp Button Style */
+        .btn-whatsapp {
+            color: var(--whatsapp-color);
+            border: 1px solid var(--whatsapp-color);
+            background: transparent;
+            font-weight: 600;
+        }
+        
+        .btn-whatsapp:hover {
+             background-color: var(--whatsapp-color);
+             color: white;
+        }
+
+        /* --- Features Banner --- */
+        .features-banner {
+            background-color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        .feature-box {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #aaa;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        footer ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        
+        footer ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="brand-logo" href="#">
+                <i class="fas fa-book-open"></i>
+                POTH MADURA
+                <span class="sinhala-brand"> | පොත් මැදුර</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories (වර්ග)</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Novels (නවකතා)</a></li>
+                            <li><a class="dropdown-item" href="#">Short Stories (කෙටි කතා)</a></li>
+                            <li><a class="dropdown-item" href="#">Educational (අධ්‍යාපනික)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Authors</a></li>
+                </ul>
+
+                <form class="d-flex ms-3 me-3 my-2 my-lg-0">
+                    <div class="input-group">
+                        <input class="form-control border-end-0 border" type="search" placeholder="Search books...">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary bg-white border-start-0 border ms-n5" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <div class="d-flex align-items-center mt-3 mt-lg-0">
+                    <a href="#" class="nav-icon-btn"><i class="far fa-user"></i></a>
+                    <a href="#" class="nav-icon-btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-badge">1</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <span class="hero-sinhala">දැනුමේ රජ දහන</span>
+            <h1 class="hero-title">Welcome to Poth Madura</h1>
+            <p class="lead mb-4 text-white-50">Your premier digital destination for Sinhala and English eBooks. <br>Instant access to thousands of titles.</p>
+            <a href="#bestsellers" class="btn btn-gold">BROWSE COLLECTION (පොත් බලන්න)</a>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section id="bestsellers">
+            <div class="section-header">
+                <h2 class="section-title">Bestsellers (වැඩිපුරම අලෙවි වූ)</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="book-card">
+                        <div class="book-cover-container">
+                            <img src="https://placehold.co/200x280/0a2342/ffffff?text=PROMPT+BOOK" alt="Book Cover" class="book-cover">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="book-title book-title-sinhala">Prompt Book (Images)</h5>
+                            <p class="book-author">Jeron Dewmin</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="book-price">LKR 450.00</span>
+                                
+                                <a href="https://wa.me/94703358466?text=Hi%20Poth%20Madura,%20I%20would%20like%20to%20buy%20the%20Prompt%20Book" 
+                                   class="btn btn-sm btn-whatsapp" 
+                                   target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Buy Now
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+
+    </div> 
+
+    <div class="features-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 feature-box">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h5>Instant Delivery</h5>
+                    <p class="text-muted">Receive your PDF via WhatsApp immediately after payment.</p>
+                </div>
+                <div class="col-md-4 feature-box">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h5>Secure Payments</h5>
+                    <p class="text-muted">Simple bank transfer process.</p>
+                </div>
+                <div class="col-md-4 feature-box">
+                    <i class="fas fa-book-reader feature-icon"></i>
+                    <h5>Vast Library</h5>
+                    <p class="text-muted">A wide selection of Sinhala and English literature.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a class="brand-logo text-white mb-3" href="#">
+                        <i class="fas fa-book-open text-white"></i>
+                        POTH MADURA
+                    </a>
+                    <p>The ultimate destination for digital reading in Sri Lanka. Bringing the library to your fingertips.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 offset-lg-1 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop All Books</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                 <div class="col-6 col-lg-2 mb-4">
+                    <h5 class="footer-title">Help & Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">How to Read eBooks</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p>Subscribe to get updates on new releases and offers.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-gold" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center pt-3">
+                <p class="mb-0">&copy;  Poth Madura. All rights reserved. | පොත් මැදුර</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
